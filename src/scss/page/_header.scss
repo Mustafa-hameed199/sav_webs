@@ -1,0 +1,204 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Header ◽◽◽◽◽◽◽◽◽◽◽◽ */
+$comn-time-func: cubic-bezier(.8, .5, .2, 1.4);
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    transition: .5s ease;
+    background-color: white;
+    
+    &.header-scroll {
+        box-shadow: 0 5px 15px -5px rgba(black , .2);
+        @include br(sm) {
+            background-color: $main-clr;
+
+            .nav {
+                &__logo { color: white }
+                &__links {
+                    color: white;
+                    & .lineMove { background-color: white }
+                }
+                &__link {
+                    &.active,
+                    &:hover { color: black }
+                }
+            }
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    text-transform: capitalize;
+    font-weight: 500;
+    @include br(mobile) { padding: .5rem 0 }
+
+    &__logo {
+        color: $main-clr; 
+        font-size: 2rem; 
+        transition: .3s ease;
+        cursor: pointer 
+    }
+    &__icon {
+        position: relative;
+        width: 35px;
+        height: 27px;
+        cursor: pointer;
+
+        span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background-color: #101010;
+            transition: .4s $comn-time-func;
+            pointer-events: none;
+        }
+        span:nth-child(1) { top: 0 }
+        span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        span:nth-child(3) { bottom: 0 }
+
+        &.animate span:nth-child(1) { 
+            left: -5px;
+            transform: rotate(-45deg);
+            transform-origin: right top 
+        }
+        &.animate span:nth-child(2) { opacity: 0 }
+        &.animate span:nth-child(3) {
+            left: -5px;
+            transform: rotate(45deg);
+            transform-origin: right bottom
+        }
+    }
+    &__icon.animate + &__links { clip-path: inset(0 0 0 0) }
+
+    &__links {
+        position: absolute;
+        left: 0%;
+        top: 100%;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        clip-path: inset(0 0 100% 0 );
+        background-color: rgba($main-clr , .9);
+        color: white;
+        border-radius: 0 0 20px 20px;
+        transition: .4s $comn-time-func;
+        overflow: hidden;
+        
+        @include br(sm) {
+            all: unset;
+            display: flex;
+            position: relative;
+            z-index: 999;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        & .lineMove {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0;
+            height: 90%;
+            z-index: -1;
+            transform: translateY(-50%);
+            background-color: $main-clr;
+            transition: .3s ease;
+            pointer-events: none;
+            border-radius: 100vw;
+            // clip-path: circle(40% at 50% 50%);
+            
+            // &::before,
+            // &::after {
+            //     content: '';
+            //     position: absolute;
+            //     bottom: -1px;
+            //     transition: inherit;
+            //     background: $main-clr;
+            //     // background: black;
+            //     // background: white;
+            //     width: 15px;
+            //     height: 15px;
+            //     border-radius: 50%;
+            // }
+            
+            // &::before {
+            //     right: -10px; 
+            // // border-radius: 0 0 5px 5px;
+            // }
+            // &::after {
+            //     left: -10px;
+            // }
+        }
+    }
+    
+    &__link {
+        padding: 1.5rem .5rem;
+        &.active,
+        &:hover { color: white}
+        @include br(mobile) {
+            color: white;
+            padding: 1rem 0;
+            &.active,
+            &:hover { background-color: $main-clr }
+        }
+        transition: .3s ease;
+    }
+
+    &__menu {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        z-index: 9999;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 1rem;
+        width: 50%;
+        height: 100%;
+        padding: 1rem;
+        clip-path: inset(0 100% 0 0);
+        background: $secondary-clr;
+        overflow: auto;
+        text-align: center;
+        color: white;
+        transition: .2s ease;
+
+        @include br(sm) {
+            position: absolute;
+            top: calc(100% - 1px);
+            top: 100%;
+            left: auto;
+            right: 0;
+            width: 40%;
+            height: auto;
+            border-radius: 0 0 20px 20px;
+            clip-path: inset(0 0 100% 100%);
+            text-align: left;
+        }
+
+        &.show { clip-path: inset(0 0 0 0) }
+    }
+    .menu__link {
+        padding: 1rem;
+        transition: .3s ease;
+        border-radius: 10px 0 10px 0;
+        &:hover,
+        &.active {
+            background: white;
+            color: black;
+        }
+    }
+}

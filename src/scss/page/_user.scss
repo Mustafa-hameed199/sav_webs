@@ -1,0 +1,93 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Main Inputs ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.user {
+    perspective: 2500px;
+    transform-style: preserve-3d;
+    .box { 
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    &__inputs {
+        --rot: 0;
+        position: relative;
+        width: min(500px , 100%);
+        // width: 100%;
+        height: 50px;
+        transform: rotateX( calc(var(--rot) * 1deg));
+        transform-style: preserve-3d;
+        transition: .5s ease;
+        input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            display: block;
+            padding: 1rem .5rem;
+            box-shadow: 0 5px 15px rgba(black,.175);
+            backface-visibility: hidden;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid $main-clr;
+            caret-color: $secondary-clr;
+        }
+
+        input:nth-of-type(1) { transform: translateZ(26px) }
+        input:nth-of-type(2) { transform: rotateX(-90deg) translateZ(26px) }
+        input:nth-of-type(3) { transform: rotateX(-180deg) translateZ(26px) }
+    }
+
+    .add-btn {
+        display: grid;
+        place-items: center;
+        padding: .75rem 1.5rem;
+        border-radius: 5px;
+        text-transform: capitalize;
+        font-weight: 500;
+        background-color: $secondary-clr;
+        color: white;
+    }
+
+    .select__content {
+        --w : 30px;
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+        }
+        &::before {
+            right: 1rem;
+            top: 50%;
+            z-index: 10;
+            transform: translateY(calc(-50% + 4px));
+            border-width: 8px;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+        &::after {
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: var(--w);
+            background-color: $main-clr;
+        }
+    }
+
+    &__select {
+        height: 100%;
+        padding: .5rem 1rem;
+        padding-right: var(--w);
+        border: none;
+        background-color: $main-clr;
+        color: white;
+        outline: none;
+        cursor: pointer;
+    }
+}

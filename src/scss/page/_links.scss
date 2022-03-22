@@ -1,0 +1,67 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Main Inputs ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.links__section {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(225px , 100%) , 1fr));
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        @include br(mobile) { row-gap: 2rem }
+    }
+    
+    .item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .5rem;
+        text-transform: capitalize;
+        font-size: 1.2rem;
+        @include br(sm) { > * { flex-basis: calc(50% - .5rem) } }
+        
+        &__link {
+            position: relative;
+            padding: .75rem 1.25rem;
+            background-color: $sky-clr;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            text-align: center;
+            overflow: hidden;
+            span { 
+                position: relative; 
+                display: block;
+            }
+            span , i { transition: .4s ease }
+
+            i {
+                position: absolute;
+                top: 50%;
+                left: -100%;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            &:hover {
+                span { transform: translateX(calc(100% + 1.5rem)) }
+                i {
+                    left: 50%;
+                    transform: translate(-50%,-50%) rotate(45deg) scale(1.1);
+                    animation: fly .8s ease-in-out infinite alternate;
+                }
+            }
+        }
+        
+        &__btn {
+            display: grid;
+            place-items: center;
+            padding: .5rem 1rem;
+            background-color: $secondary-clr;
+            border-radius: 5px;
+            // text-transform: capitalize;
+            color: white;
+        }
+    }
+}
+
+@keyframes fly {
+    0% { transform: translate(-50%,-25%) rotate(45deg) scale(1.1) }
+    100% { transform: translate(-50%,-75%) rotate(45deg) scale(1.1) }
+}

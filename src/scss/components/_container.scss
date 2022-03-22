@@ -1,0 +1,10 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Container ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.container {
+    padding: 0 20px;
+    margin: 0 auto;
+
+    @include br(mobile) { max-width: 600px };
+    @include br(sm) { width:750px }
+    @include br(md) { width:970px }
+    @include br(lg) { width:1170px }
+}

@@ -1,0 +1,52 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Home ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.home {
+    @include br(mobile) { padding-top: 4rem }
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+
+        @include br(md) {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+            gap: 0;
+        }
+    }
+
+    &__content {
+        padding: 1rem;
+        text-transform: capitalize;
+        .title {
+            font-size: clamp(2.5rem , 1.5rem + 5vw , 4.5rem);
+            font-weight: 600;
+            span { color: $secondary-clr }
+        }
+        .desc {
+            margin-bottom: 1rem;
+            max-width: 55ch; 
+            @include br(md) { max-width: 35ch }
+        }
+        .btn {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto;
+            @include br(md) { margin: 0 }
+            padding: .75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 5px;
+            background: $main-clr;
+            color: white;
+        }
+    }
+
+    &__img {
+        @include br(md) {
+            flex-basis: 50%;
+            justify-self: flex-end;
+        }
+    }
+}

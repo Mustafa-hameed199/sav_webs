@@ -1,0 +1,56 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Common Style ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.main-sec {
+    padding: $main-padding 0;
+    min-height: 75vh;
+}
+
+.glitch {
+    --clip-1: inset(0 0 0 0 );
+    --clip-2: inset(30% 0 30% 0 );
+    --clip-3: inset(50% 0 50% 0 );
+    --clip-4: inset(40% 0 40% 0 );
+    --clip-5: inset(60% 0 60% 0 );
+    --clip-6: inset(100% 0 0 0 );
+    position: relative;
+    
+    &::after {
+        all: inherit;
+        content: attr(data-glitch);
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &:hover::after { animation: glitch-animation .5s  steps(2,end) forwards }
+}
+.font-a::after { 
+    font-family: "Font Awesome 6 Free";
+    content: "\f2ed";
+}
+
+@keyframes glitch-animation  {
+    0% {
+        clip-path: var(--clip-1);
+        transform: translate(0%,0%);
+    }
+    25% {
+        clip-path: var(--clip-2);
+        transform: translate(-10%,20%);
+    }
+    35% {
+        clip-path: var(--clip-3);
+        transform: translate(5%,15%);
+    }
+    50% {
+        clip-path: var(--clip-4);
+        transform: translate(-20%,-20%);
+    }
+    75% {
+        clip-path: var(--clip-5);
+        transform: translate(10%,10%);
+    }
+    100% {
+        clip-path: var(--clip-6);
+        transform: translate(0%);
+    }
+}

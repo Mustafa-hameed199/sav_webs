@@ -1,0 +1,23 @@
+/* ◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽◽ Footer ◽◽◽◽◽◽◽◽◽◽◽◽ */
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+    color: white;
+    background-color: $main-clr;
+
+    .social {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 2rem;
+        gap: 1rem .5rem;
+        justify-content: center;
+        align-items: center;
+
+        i {
+            transition: .4s ease;
+            &:hover {
+                color: $sky-clr;
+            }
+        }
+    }
+}

@@ -59,7 +59,7 @@
                                 mouseover: moveLine,
                                 mouseleave: moveLineToActive,
                             } : {}"
-                            @click.prevent="navLink"> {{ category }} </a>
+                            @click.prevent="navLink"> {{ category | fixName }} </a>
                         </li>
                         
                         <li class="nav__list menu" v-if="CategoriesForMenu">
@@ -83,7 +83,7 @@
                             <a href="#" 
                             class="menu__link" 
                             @click.prevent="navLink($event) , menuLinksHide()"
-                            :data-scroll="category"> {{ category }} </a>
+                            :data-scroll="category"> {{ category | fixName }} </a>
                         </li>
                     </ul>
                 </nav>

@@ -25,7 +25,7 @@ new Vue({
                 id: new Date(),
                 url: this.webURL,
                 name: this.webName,
-                place: this.webCategory
+                place: this.webCategory.split(" ").join("-")
             }
 
             this.links.push(ob);
@@ -327,4 +327,10 @@ new Vue({
 
         
     },
+// ✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏ Fix The Name When Someone Insert Category Name With Space Between  ✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏✏
+    filters: {
+        fixName(v) {
+            return v.split("-").join(" ")
+        }
+    }
 })
